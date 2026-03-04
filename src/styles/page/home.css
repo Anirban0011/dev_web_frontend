@@ -1,0 +1,113 @@
+.home-layout{
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.home-layout .search-bar{
+  margin: 30vh auto 0 auto;
+  display: flex;
+  flex-direction: column;
+  width: 88%;
+  border: none;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.home-layout .search-bar input{
+  width: 100%;
+  height: 55px;
+  padding: 0.5rem 1rem 0.5rem 3.2rem;
+  font-size: 1.1rem;
+  color: #ffffffbd;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 999px;
+  border: none;
+  /* margin-left: 1.1rem; */
+  backdrop-filter: blur(10px);
+}
+
+.search-bar input:hover{
+  border: 1px solid #fff;
+}
+
+.search-bar input:focus{
+ outline: none;
+}
+
+.search-bar input::placeholder{
+    color: #ffffffbd;
+    font-weight: 100;
+}
+
+.search-bar:has(.srch-suggest) input{
+ border-radius: 25px 25px 0 0;
+}
+
+.search-bar:has(.srch-suggest) input:hover{
+  border: none;
+}
+
+.srch-suggest{
+  position: absolute;
+  top: 100%;
+  left: 0.56rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background: rgba(255,255,255,0.3);
+  backdrop-filter: blur(10px);
+  border-bottom-left-radius: 28px;
+  border-bottom-right-radius: 28px;
+  overflow: hidden;
+}
+
+.suggest-items{
+  width: 100%;
+  padding: 10px 1.5rem;
+  color: #ffffffbd;
+  font-size: 1.05rem;
+  cursor: pointer;
+}
+
+.home-layout .search-bar span {
+  position: absolute;
+  left: 1.2rem;
+  top: 1.8rem;
+  transform: translateY(-50%);
+  pointer-events: none;
+  z-index: 2;
+  font-size: 1.2rem;
+}
+
+.home-layout .search-bar .search-cancelbtn{
+  position: absolute;
+    top: 1.5rem;
+    transform: translateY(-50%);
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+    border: none;
+    color: #ccc;
+    font-weight: 600;
+    background-color: #140202a5;
+    cursor: pointer;
+    right: 0.67rem;
+}
+
+.no-results{
+  align-items: center;
+  justify-content: center;
+  height: 2rem;
+  margin: auto;
+  font-style: italic;
+  color: #fff;
+  font-size: 1.1rem;
+}
+
+@media(max-width: 768px){
+  .srch-suggest{
+    left: 0rem;
+  }
+}

@@ -1,0 +1,277 @@
+.projformdiv .addprojform{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  max-width: 600px;
+  width: 100%;
+  height: 85vh;
+  margin: auto;
+  background: var(--bg);
+  color: var(--text);
+  padding: 20px 30px;
+  border-radius: 30px;
+  border: 1px solid #ccc;
+}
+
+.addprojform .sub-btn {
+  padding: 10px 13px;
+  background: #007bff;
+  color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  cursor: pointer;
+  width: 80px;
+  align-self: center;
+  font-size: 17px;
+  font-weight: 250;
+  justify-content: center;
+}
+
+.addprojform .sub-btn:hover {
+  background: #0056b3;
+}
+
+.addprojbuff{
+  display: flex;
+  width: 100%;
+  padding: 10px;
+  font-size: 20px;
+  font-weight: 200;
+  align-self: center;
+  color: #388e3c;
+  justify-content: center;
+  margin-top: 50%;
+  gap: 25px;
+}
+
+.addprojform .tagdiv{
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.addprojform .tagdiv label{
+  cursor: text;
+}
+
+
+.addprojform .textfield-title {
+  display: inline;
+  flex-direction: row;
+}
+
+.addprojform .textfield-title label{
+  cursor: text;
+}
+
+.addprojform .textfield-title input {
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background-color: var(--bg);
+  color: var(--text);
+  font-size: 14px;
+  outline: none;
+  margin-left: 10px;
+  width: 90%;
+}
+
+.addprojform .textfield-repo {
+  display: inline;
+  flex-direction: row;
+}
+
+.addprojform .textfield-repo label{
+  cursor: text;
+}
+
+.addprojform .textfield-repo input {
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background-color: var(--bg);
+  color: var(--text);
+  font-size: 14px;
+  outline: none;
+  margin-left: 10px;
+  width: 90%;
+}
+
+.projformdiv .close-btn {
+  position: absolute;
+  width: 56px;
+  height: 56px;
+  top: 10px;
+  right: 10px;
+  border: 1px solid #ccc;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  font-size: 20px;
+  cursor: pointer;
+  color: #888;
+  font-weight: 700;
+  align-items: center;
+  justify-content: center;
+}
+
+.addprojform .projcoverimg{
+  margin-top: 65px;
+}
+
+.addprojform .projcoverimg label{
+  margin-right: 5px;
+  cursor: text;
+}
+
+.spinner {
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  border-top-color: #4caf50;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.checkbox {
+  display: none;
+}
+
+.tags{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  gap: 12px;
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  border: 1px solid var(--text);
+  color: var(--text);
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: var(--bg);
+  cursor: pointer;
+  user-select: none;
+}
+
+.tag.active {
+  background: var(--text);
+  color: var(--bg);
+  border: 1px solid var(--text);
+}
+
+.icon{
+  position: relative;
+  border: 1px solid #000;
+  background : #fff;
+  color: #000;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.icon::before,
+.icon::after {
+  position: absolute;
+  content: '';
+  background: #000;
+  width: 10px;
+  height: 0.5px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: transform 0.3s ease;
+}
+.icon::after {
+  transform: translate(-50%, -50%) rotate(-90deg);
+}
+.icon.active::after {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+.icon.active::before {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+@media (max-width: 768px) {
+
+  .projformdiv {
+    padding: 10px;
+    align-items: flex-start;
+    overflow-y: hidden;
+  }
+
+  .projformdiv .addprojform {
+    max-width: 100%;
+    width: 100%;
+    height: auto;
+    max-height: 98vh;
+    border-radius: 20px;
+    padding: 20px;
+    gap: 20px;
+  }
+
+  /* Close button smaller */
+  .projformdiv .close-btn {
+    width: 42px;
+    height: 42px;
+    font-size: 18px;
+    top: 8px;
+    right: 8px;
+  }
+
+  /* Fix image spacing */
+  .addprojform .projcoverimg {
+    margin-top: 50px;
+  }
+
+  /* Make label + input stack properly */
+  .addprojform .textfield-title,
+  .addprojform .textfield-repo {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .addprojform .textfield-title input,
+  .addprojform .textfield-repo input {
+    width: 100%;
+    margin-left: 0;
+    font-size: 15px;
+  }
+
+  /* Tag section */
+  .addprojform .tags {
+    justify-content: flex-start;
+    gap: 10px;
+  }
+
+  .tag {
+    font-size: 14px;
+    padding: 5px 10px;
+  }
+
+  /* Submit button full width */
+  .addprojform .sub-btn {
+    width: 100%;
+    font-size: 16px;
+    padding: 12px;
+  }
+
+  /* Loading state center fix */
+  .addprojbuff {
+    margin-top: 40%;
+    font-size: 18px;
+  }
+
+}

@@ -1,0 +1,44 @@
+.not-found-div{
+    width: 90%;
+    color: var(--text);
+    background: var(--bg);
+    margin: 0 auto;
+    display: flex;
+    min-height: 100vh;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.not-found-div h2{
+   margin: 10px auto;
+   padding: 1rem 1rem;
+   font-size: 40px;
+}
+
+.not-found-div p{
+   margin: 0.5rem auto;
+   padding: 1rem 1rem;
+   font-size: 20px;
+}
+
+.not-found-div button{
+   margin: 1rem auto;
+   padding: 1rem 1rem;
+   font-size: 20px;
+   border: 1px solid #ccc;
+   color: #fff;
+   background-color: #0b43fa;
+   border-radius: 10px;
+   cursor: pointer;
+}
+
+.not-found-div button:hover{
+    font-weight: 700;
+}
+
+@media (max-width: 768px) {
+   .not-found-div img{
+      width: 100%;
+   }
+}

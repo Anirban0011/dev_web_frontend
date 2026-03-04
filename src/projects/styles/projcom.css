@@ -1,0 +1,18 @@
+.running-div{
+    display: flex;
+}
+
+.running-div img{
+    height: 27px;
+    width: 27px;
+    margin-left: 10px;
+}
+
+@media (max-width: 768px) {
+
+  .running-div {
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+  }
+}

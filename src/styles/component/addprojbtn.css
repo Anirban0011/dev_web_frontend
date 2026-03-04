@@ -1,0 +1,11 @@
+.addprojbtn {
+  background-color: #007bff;
+  font-size: 16px;
+  font-weight: 200;
+  color: #fff;
+  padding: 10px 16px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  cursor: pointer;
+  box-shadow: 0 0 0px 4px rgba(0, 123, 255, 0.55);
+}

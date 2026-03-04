@@ -1,0 +1,152 @@
+.ham-menu{
+    background-color: transparent;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    padding: 0.8rem;
+    position: fixed;
+    top: 1rem;
+    left: 0.5rem;
+    z-index: 4;
+    }
+
+.ham-menu span {
+      display: block;
+      width: 30px;
+      height: 3px;
+      background-color: #fff;
+      margin: 5px 0;
+      transition: 0.4s;
+      border-radius: 4px;
+    }
+
+.dark .ham-menu{
+  border: 1px solid #ccc;
+}
+
+.ham-menu:hover{
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.ham-menu:hover::after{
+   border: 2px solid #333;
+}
+
+.ham-menu.open span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.ham-menu.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.ham-menu.open span:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
+.nav-overlay{
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.35);
+  backdrop-filter: blur(2px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 3;
+}
+
+.nav-overlay.show{
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.ham-nav .navbar {
+    transform: translateX(-100%);
+    transition: transform 0.4s ease-in-out;
+}
+
+.ham-nav.nav-open .navbar {
+    transform: translateX(0);
+}
+
+.navbar{
+    margin-top: 5rem;
+    margin-left: -10px;
+    border-radius: 8px;
+    background-color: var(--bg);
+    color: var(--text);
+    position: fixed;
+    width: 10.2rem;
+    z-index: 4;
+    border: 1px solid #ccc;
+}
+
+
+.navbar .nav-items{
+    display: flex;
+    padding-left: 0rem;
+    flex-direction: column;
+    width: 100%;
+    gap: 1rem;
+    list-style: none;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.35rem;
+}
+
+.navbar .nav-items a{
+    width: 100%;
+    display: block;
+    padding: 15px 45px;
+    box-sizing: border-box;
+    text-decoration: none;
+    color: var(--text);
+}
+
+.navbar .nav-items a:hover{
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.tog-th-nav button{
+    width: 4.9rem;
+    height: 2.4rem;
+    font-size: 1.2rem;
+    border-radius: 99px;
+    background-color: white;
+    border: 1px solid var(--text);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    cursor: pointer;
+    gap: 0.5rem;
+}
+
+.tog-th-nav button span {
+    height: 1.9rem;
+    width: 1.9rem;
+    font-size: 1.4rem;
+    display: flex;
+    align-items: center;
+    border-radius: 50%;
+    justify-content: center;
+    line-height: 1;
+}
+
+.icon-moon-light{
+    background-color: var(--bg);
+}
+.icon-moon-dark{
+    background-color: var(--bg);
+}
+
+.icon-sun-light{
+    background-color: var(--text);
+}
+.icon-sun-dark{
+    background-color: var(--text);
+}
+
+ .account.small-text {
+    font-size: 1rem;
+}

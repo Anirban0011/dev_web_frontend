@@ -1,0 +1,59 @@
+.contact-div{
+    height: 100vh;
+    width: 70%;
+    color: var(--text);
+    background: var(--bg);
+    margin: 0 auto;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-div h1{
+    margin: 40px auto;
+    margin-top: 80px;
+    font-size: 50px;
+}
+
+.contact-div button{
+    width : 180px;
+    height: 70px;
+    margin: 0 auto;
+    border-radius: 12px;
+    background-color: rgba(12, 12, 189, 0.842);
+    color: #fff;
+    font-size: 20px;
+    font-weight: 700;
+    cursor: pointer;
+    border: 1px solid #ccc;
+}
+
+.contact-div button:hover {
+    border-color: rgba(255, 255, 255, 0.8);
+     box-shadow:
+        0 0 3px rgba(12, 12, 189, 0.8),
+        0 0 4px rgba(12, 12, 189, 0.6),
+        0 0 4px rgba(12, 12, 189, 0.4);
+}
+
+.dark .contact-div{
+    border: 1px solid #ccc;
+}
+
+
+@media (max-width: 768px) {
+    .contact-div{
+        width: 95%;
+    }
+
+    .ham-contact .ham-menu{
+    top: 20px;
+    left: 15px;
+    border: 1px solid var(--text);
+    background-color: var(--bg);
+  }
+
+  .ham-contact .ham-menu span{
+    background-color: var(--text)
+  }
+}

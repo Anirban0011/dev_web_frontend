@@ -1,0 +1,394 @@
+.project{
+    background-color: var(--bg);
+    width: 90%;
+    height: auto;
+    min-height: 100vh;
+    margin-left: 80px;
+    transition: transform 0.4s ease;
+    padding-bottom: 100px;
+    border-radius: 6px;
+}
+
+.ham{
+    position: fixed;
+    top: 12px;
+    left: 1px;
+    z-index: 5;
+    width: auto;
+    height: auto;
+    background: transparent;
+}
+
+.project h1, p{
+    margin-left: 50px;
+}
+
+.project h1{
+    margin-top: 0;
+    padding-top: 50px;
+    font-size: 36px;
+    margin-bottom: 16px;
+   }
+
+.project p{
+    font-size: 18px;
+}
+
+.projectheader{
+  background: var(--bg);
+  color: var(--text);
+  padding: 1rem 0;
+}
+
+.addprojbtn {
+    position: absolute;
+    top: 110px;
+    right: 130px;
+}
+
+ .projformdiv {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 4;
+}
+
+.project .projformdiv .addprojform {
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+}
+
+.project .projcarddiv
+{
+    margin: 75px 85px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    padding-left: 45px;
+    gap: 40px 60px;
+}
+
+.projcarddiv .not-found{
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-right: 55px;
+  font-size: 1.4rem;
+  color: var(--text);
+  width: 100%;
+}
+
+.projsearchBar{
+  margin-top: 40px;
+  display: flex;
+  width: 100%;
+  justify-self: center;
+  position: sticky;
+  height: 70px;
+  top: 0;
+  border: none;
+  background: var(--bg);
+  justify-content: center;
+  padding: 10px 0;
+}
+
+.projsearchBar.scrolled{
+    box-shadow: 0 4px 6px -2px rgba(0,0,0,0.3);
+    border-radius: 0 0 12px 12px;
+}
+
+.projsearchBar input{
+  width: 88%;
+  height: 55px;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border-radius: 999px;
+  border: 1px solid #ccc;
+  background-color: var(--bg);
+  padding : 0.5rem 1rem 0.5rem 2.8rem;
+  color: var(--text);
+}
+
+.projsearchBar input:hover{
+  border-color: #00000084;
+}
+
+.projsearchBar input:focus{
+ outline: none;
+}
+
+.projsearchBar span {
+  position: absolute;
+  left: 100px;
+  top: 56%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  z-index: 2;
+  font-size: 1.2rem;
+}
+
+.light .projsearchBar span svg {
+  fill: #15020235;
+}
+
+.dark .projsearchBar span svg {
+  fill: var(--text);
+}
+
+.projsearchBar .srch-filter{
+  right: 100px;
+  z-index: 2;
+  position: absolute;
+  margin-top: 5px;
+  display: flex;
+  flex-direction: column;
+}
+
+.projsearchBar .srch-filter .filter-btn{
+  border-radius: 10px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+.projsearchBar .srch-filter .filter-btn img{
+  width: 40px;
+  height: 40px;
+  filter: brightness(2.5) contrast(1.5);
+  border-radius: 50%;
+}
+
+.dark .projsearchBar .srch-filter .filter-btn img{
+  filter: invert(1) brightness(1.4) contrast(1.2);
+}
+
+.projsearchBar .search-cancelbtn{
+    position: absolute;
+    top: 50%;
+    right: 150px;
+    transform: translateY(-50%);
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+    border: none;
+    color: #ccc;
+    font-weight: 600;
+    background-color: #140202a5;
+    cursor: pointer;
+}
+
+ .chkbox-dd-menu{
+  transform: translateY(-8px) scale(0.85);
+  transform-origin: top;
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.3s ease, opacity 0.15s ease;
+  display: flex;
+  flex-direction: column;
+  width: 20rem;
+  height: 20rem;
+  overflow-y: auto;
+  z-index: 3;
+  background-color: var(--bg);
+  color: var(--text);
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  position: absolute;
+  right: 100px;
+  padding: 10px;
+  gap: 1rem;
+  padding-left: 1rem;
+}
+
+.chkbox-dd-menu.open {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.chkbox-dd-menu .chkbox-btns{
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+.chkbox-dd-menu .chkbox-btns button{
+  color: #fff;
+  background-color: #04607ad0;
+  width: 65px;
+  height: 35px;
+  border-radius: 999px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  font-size: 16px;
+}
+.chkbox-dd-menu .chkbox-btns button:hover{
+  background-color: #040a7ad0;
+}
+
+.chkbox-wrapper {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.chkbox-wrapper .chk-tags {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  border: 1px solid #ccc;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background-color: var(--bg);
+  color: var(--text);
+  cursor: pointer;
+  user-select: none;
+}
+
+.chkbox-wrapper .chk-tags.checked{
+  color: var(--bg);
+  background-color: var(--text);
+}
+
+.project .pagination{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.project .pagination button{
+  border-radius: 50%;
+  border: none;
+  font-weight: 400;
+  font-size: 16px;
+  background-color: none;
+  color: #0000008f;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  transition: 0.4s ease;
+  border: 1px solid #000;
+}
+
+.project .pagination .page-active{
+  border-radius: 50%;
+  border: none;
+  font-weight: 400;
+  font-size: 16px;
+  background-color: #4604eaed;
+  color: #fff;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+}
+
+.project .pagination button:hover{
+  width: 45px;
+  height: 45px;
+  color: #fff;
+  background-color: #4604eaed;
+  border: none;
+}
+
+@media (max-width: 768px) {
+  .project {
+    position: relative;
+    width: 100%;
+    margin-left: 0;
+    border-radius: 0;
+    padding: 0 15px 80px;
+  }
+
+  .ham .ham-menu{
+    position: fixed;
+    border: 1px solid var(--text);
+    background: var(--bg);
+    top: 12px;
+    left: 20px;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+  }
+
+  .ham .ham-menu span{
+    background-color: var(--text);
+  }
+
+   .projsearchBar.scrolled {
+    padding-left: 50px;
+  }
+
+   .projsearchBar input {
+    width: 95%;
+    height: 50px;
+  }
+
+  .projsearchBar span {
+    left: 1rem;
+    top: 2.3rem;
+    font-size: 1rem;
+  }
+
+  .addprojbtn {
+    position: sticky;
+    margin-top: 1px;
+    margin-bottom: -20px;
+    left: 25px;
+    right: inherit;
+  }
+
+  .projsearchBar.scrolled span {
+    left: 4rem;
+    font-size: 1rem;
+  }
+
+  .projsearchBar .search-cancelbtn{
+    right: 4.5rem;
+  }
+
+  .projsearchBar .srch-filter{
+    width: 40px;
+    height: 40px;
+    right: 30px;
+  }
+
+   .project .projcarddiv {
+    margin: 40px 10px;
+    padding-left: 0;
+    justify-content: center;
+  }
+
+  .projsearchBar.dd-open {
+  z-index: 5;
+}
+
+.chkbox-dd-menu {
+  position: absolute;
+  top: 10px;
+  right: -1px;
+  z-index: 10;
+  width: 92vw;
+  }
+
+   .project h1,
+  .project p {
+    margin-left: 10px;
+    justify-content: flex-start;
+    align-items: flex-start;
+    display: flex;
+    flex-direction: row;
+  }
+
+}

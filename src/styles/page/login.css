@@ -1,0 +1,312 @@
+.login-layout{
+    background: var(--bg);
+    color: var(--text);
+    width: 45%;
+    height: 88vh;
+    margin: 40px auto;
+    border-radius: 40px;
+    padding: 20px;
+}
+
+.dark .login-layout{
+    border: 1px solid #ccc;
+}
+
+.login-layout.loading{
+    background: var(--bg);
+    width: 45%;
+    height: 88vh;
+    margin: 40px auto;
+    border-radius: 40px;
+    padding: 20px;
+    display: flex;
+    align-items: center ;
+    justify-content: center;
+}
+
+.ham-login{
+    position: fixed;
+    left : 2px;
+}
+
+.login-box{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.login-box h3{
+    font-size: 40px;
+    text-align: center;
+}
+
+.login-box .plain-login
+{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.login-box .username{
+    display: flex;
+    flex-direction: column;
+}
+
+.login-box .username label{
+    font-size: 18px;
+    margin-left: 30px;
+}
+
+.login-box .username .username-field{
+    height: 50px;
+    width: 90%;
+    margin-top: 10px;
+    align-self: center;
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    background-color: var(--bg);
+    color: var(--text);
+    font-size: 18px;
+    padding-left: 10px;
+}
+
+.login-box .username .username-field:hover{
+    border: 1px solid var(--text);
+}
+
+.login-box .password{
+    display: flex;
+    flex-direction: column;
+}
+
+.login-box .password label{
+    font-size: 18px;
+    margin-left: 30px;
+}
+
+.login-box .password .pwd-field{
+    height: 50px;
+    width: 90%;
+    margin-top: 10px;
+    align-self: center;
+    border: 1px solid #ccc;
+    background-color: var(--bg);
+    color: var(--text);
+    border-radius: 12px;
+    font-size: 18px;
+    padding-left: 10px;
+}
+
+.login-box .password .pwd-field:hover{
+    border: 1px solid var(--text);
+}
+
+.login-box .login-btn{
+    margin-top: 30px;
+    width: 100%;
+}
+
+.login-box .login-btn button{
+    width: 90%;
+    margin-left: 32px;
+    align-self: center;
+    height: 40px;
+    border-radius: 12px;
+    border: none;
+    color: #fff;
+    background-color: #0bd4bc;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.login-box .login-btn button:hover{
+    background-color: #04718a;
+}
+
+.or-divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #555;
+  font-size: 18px;
+  margin: 20px 0;
+}
+
+.or-divider::before,
+.or-divider::after {
+  content: "";
+  flex: 1;
+  border-bottom: 1px solid #ccc;
+}
+
+.or-divider:not(:empty)::before {
+  margin-right: .75em;
+}
+.or-divider:not(:empty)::after {
+  margin-left: .75em;
+}
+
+.login-box .github-login{
+    margin-top: 30px;
+    width: 100%;
+    gap: 8px;
+}
+
+.login-box .github-login button img{
+    cursor: pointer;
+    font-size: 12px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+.login-box .github-login button{
+    width: 90%;
+    margin-left: 32px;
+    height: 40px;
+    border-radius: 12px;
+    border: 0.5px solid #ccc;
+    color: #fff;
+    background-color: #000000de;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.login-box .signup-form{
+    margin-top: 55px;
+    width: 100%;
+    text-align: center;
+
+}
+
+.signup-form-loginpage{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-box .signup-form a{
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.login-box .signup-form a:hover{
+    text-decoration: underline;
+}
+
+.login-box .signup-form a:visited {
+  color: inherit;
+}
+
+div.login-layout div.addprojbuff{
+  display: flex;
+  width: 100%;
+  padding: 10px;
+  font-size: 30px ;
+  font-weight: 200;
+  align-self: center;
+  color: #388e3c;
+  align-items: center;
+  justify-content: center;
+  margin-top: 60px;
+   gap: 25px;
+}
+
+.login-layout .spinner {
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  border-top-color: #4caf50;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@media (max-width: 768px) {
+
+  .login-layout {
+    width: 95%;
+    height: auto;
+    min-height: 85vh;
+    margin: 15px auto;
+    padding: 18px 12px;
+    border-radius: 25px;
+  }
+
+  .login-box h3 {
+    font-size: 32px;
+    margin-bottom: 10px;
+  }
+
+  .login-box .username label,
+  .login-box .password label {
+    font-size: 16px;
+    margin-left: 12px;
+  }
+
+  .login-box .username .username-field,
+  .login-box .password .pwd-field {
+    width: 100%;
+    height: 48px;
+    font-size: 18px;
+    padding-left: 10px;
+  }
+
+  .login-box .login-btn button,
+  .login-box .github-login button {
+    width: 100%;
+    margin-left: 0;
+    height: 48px;
+    font-size: 16px;
+  }
+
+  .login-box .login-btn {
+    margin-top: 20px;
+  }
+
+  .login-box .github-login {
+    margin-top: 15px;
+  }
+
+  .or-divider {
+    margin: 15px 0;
+    font-size: 16px;
+  }
+
+  .login-box .signup-form {
+    margin-top: 35px;
+    font-size: 17px;
+  }
+
+  .login-box .github-login button img {
+    width: 24px;
+    height: 24px;
+  }
+
+  .ham-login .ham-menu{
+    top: 20px;
+    left: 15px;
+    border: 1px solid var(--text);
+    background-color: var(--bg);
+  }
+
+  .ham-login .ham-menu span{
+    background-color: var(--text)
+  }
+
+  .login-layout.loading{
+    width: 90%;
+  }
+
+}

@@ -1,0 +1,151 @@
+:root {
+    --bg: #ccc;
+}
+
+.dark {
+    --bg: black;
+}
+
+.projectspm-div{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.projectspm-div .projectspm-upload{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.projectspm-div .projectspm-file{
+    width: 50%;
+    margin: 0 auto;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.projectspm-desc{
+    width: 100%;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    height: 40px;
+    margin-top: 20px;
+    padding-left: 10px;
+    background-color: var(--bg);
+}
+.dark .projectspm-desc{
+    color: #eee;
+}
+
+.projectspm-desc:hover{
+    border: 1px solid rgb(3, 3, 46);
+}
+
+.dark .projectspm-desc:hover{
+    border: 1px solid #ccc;
+}
+
+.projectspm-desc:focus{
+    outline: none;
+}
+
+.projspmbtn{
+    width: 120px;
+    height: 50px;
+    color: #fff;
+    font-size: 20px;
+    font-weight: 500;
+    background-color: #14cedb;
+    border: none;
+    border-radius: 8px;
+    margin: 20px auto;
+    cursor: pointer;
+}
+
+.projspmbtn:hover{
+    background-color: #066c73;
+}
+
+.projectspm-msg-div{
+    margin: 20px auto;
+    font-size: 20px;
+    font-weight: 200;
+    padding: 1rem 3rem;
+    border: 0.5px solid rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.projspm-btn-div{
+    margin: 0;
+    padding: 0.4rem 30rem;
+    display: flex;
+    flex-direction: row;
+}
+
+.projspmclrbtn{
+    width: 120px;
+    height: 50px;
+    color: #fff;
+    font-size: 20px;
+    font-weight: 500;
+    background-color: #007bff;
+    border: none;
+    border-radius: 8px;
+    margin: 20px auto;
+    cursor: pointer;
+}
+
+.projspmclrbtn:hover{
+    background: #0056b3;
+}
+
+@media (max-width: 768px) {
+  .projectspm-div {
+    padding: 0 12px;
+  }
+
+  .projectspm-div .projectspm-upload {
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+  }
+
+  .projectspm-div .projectspm-file {
+    width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .projectspm-desc {
+    width: 100%;
+  }
+
+  .projspm-btn-div {
+    padding: 0;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+  }
+
+  .projspmbtn,
+  .projspmclrbtn {
+    width: 100%;
+  }
+
+  .projspmbtn,
+  .projspmclrbtn {
+    height: 45px;
+    font-size: 16px;
+  }
+
+  .projectspm-msg-div {
+    width: 100%;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

@@ -1,0 +1,93 @@
+.projpage-layout {
+    width : 90%;
+    background: var(--bg);
+    color: var(--text);
+    margin: 0 auto;
+    min-height: 100vh;
+    transition: transform 0.4s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.projpage-layout .project-title {
+    width: 100%;
+    font-size: 30px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.projpage-layout .project-main-div{
+    width : 100%;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.proj-banner-div{
+    width: 100%;
+    height: 60px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 4rem;
+    margin-top: 10px;
+}
+
+.proj-back-btn{
+    height: 80%;
+    width: 100px;
+    background-color: #0f2866de;
+    color: white;
+    outline: none;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.proj-man-btn{
+    height: 80%;
+    width: 110px;
+    background-color: #0660d6de;
+    color: white;
+    outline: none;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.proj-code-btn{
+    height: 80%;
+    width: 100px;
+    background-color: #020007de;
+    color: white;
+    outline: none;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.ham-projrender{
+    display: none;
+}
+
+@media (max-width: 768px){
+
+    .projpage-layout .project-title {
+    width: 100%;
+    font-size: 25px;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+}
