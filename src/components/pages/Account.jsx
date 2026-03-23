@@ -32,6 +32,7 @@ const Account = () => {
             method : "GET",
             credentials : "include"
         })
+        console.log("Logout status:", res.status, res.ok)
         if(!res.ok){
             setFailureState(true)
             setMsg("Sign out failed, please try again later 😥!")
