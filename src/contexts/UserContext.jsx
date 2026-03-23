@@ -1,6 +1,6 @@
 import { useContext, createContext, useState, useEffect} from "react"
-import { PATH_GH_USER, PATH_USER } from "../constants/constants";
-import AsyncHandler from "../utils/AsyncHandler";
+import { PATH_GH_USER, PATH_USER } from "../constants/constants"
+import AsyncHandler from "../utils/AsyncHandler"
 const UserContext = createContext(null)
 
 const useUser = () => useContext(UserContext)

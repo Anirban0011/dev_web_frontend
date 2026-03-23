@@ -30,12 +30,13 @@ const Account = () => {
             method : "GET",
             credentials : "include"
         })
+        console.log("GH logout status:", res.status, res.ok)
         if(!res.ok){
              const res2 = await fetch(PATH_USER_LOGOUT,{
                   method : "GET",
                   credentials : "include"
                 })
-
+            console.log("Normal logout status:", res2.status, res2.ok)
             if(!res2.ok){
             setFailureState(true)
             setMsg("Sign out failed, please try again later 😥!")
@@ -79,7 +80,6 @@ const Account = () => {
         setPopup(true)
         return
     }
-
 
         setUser({
         ...curuser,
