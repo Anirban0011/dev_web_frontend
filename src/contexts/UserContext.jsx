@@ -66,7 +66,7 @@ useEffect(
     getUserData()
  }, [])
 
- if(loading) return null
+ if(loading) return <>{children}</>
   return (
         <UserContext.Provider value={{user, setUser}}>
         {children}
