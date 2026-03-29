@@ -40,6 +40,7 @@ const Account = () => {
             setPopup(true)
             return
     }
+        localStorage.removeItem('cookieset')
         setUser({cookieset : 0})
         navigate("/")
     })
