@@ -5,6 +5,7 @@ import Login from "../components/pages/Login"
 import Account from "../components/pages/Account"
 import Contact from "../components/common/Contact"
 import ProtectedRoute from "../contexts/ProtectPage"
+import RedirectLoginRoute from "../contexts/RedirectLogin"
 import NotFound from "../components/pages/404"
 import { ProjPageRender } from "../components/common/projRender"
 import ScrollToTop from "../components/common/scrolltotop"
@@ -18,7 +19,11 @@ const Routespath = () => {
     <Routes>
         <Route index element= {DEFAULT_HOME_PAGE}/>
         <Route path="projects" element={<Projects/>}/>
-        <Route path="login" element = {<Login/>}/>
+        <Route path="login" element = {
+            <RedirectLoginRoute>
+            <Login/>
+            </RedirectLoginRoute>
+            }/>
         <Route path="contact" element = {<Contact/>}/>
         <Route path="account" element = {
             <ProtectedRoute>
