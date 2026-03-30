@@ -26,8 +26,8 @@ const Account = () => {
 
     const handleLogout = AsyncHandler(async() =>{
         let res
-        const isghuser = user.usertype[1]
         const isnormaluser = user.usertype[0]
+        const isghuser = user.usertype[1] && !isnormaluser
 
         if(isnormaluser) {
         res = await fetch(PATH_USER_LOGOUT,
@@ -35,6 +35,7 @@ const Account = () => {
                 credentials: "include"
             })
         }
+        console.log("Logout status:", res?.status, res?.ok)
 
         if (!isnormaluser || res.ok){
             if(isghuser) {
