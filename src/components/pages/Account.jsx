@@ -36,7 +36,7 @@ const Account = () => {
             })
         }
 
-        if (res.ok){
+        if (!isnormaluser || res.ok){
             if(isghuser) {
             res = await fetch(PATH_GH_LOGOUT,
             {   method: "GET",
