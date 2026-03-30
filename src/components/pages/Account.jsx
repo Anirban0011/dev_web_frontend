@@ -25,15 +25,27 @@ const Account = () => {
     const inputRef = useRef(null)
 
     const handleLogout = AsyncHandler(async() =>{
-
+        let res
         const isghuser = user.usertype[1]
-        console.log("usertype:", user.usertype, "isghuser:", isghuser)
+        const isnormaluser = user.usertype[0]
 
-        const res = await fetch(isghuser ? PATH_GH_LOGOUT : PATH_USER_LOGOUT, {
-            method : "GET",
-            credentials : "include"
-        })
+        if(isnormaluser) {
+        res = await fetch(PATH_USER_LOGOUT,
+            {   method: "GET",
+                credentials: "include"
+            })
+        }
+
+        if (res.ok){
+            if(isghuser) {
+            res = await fetch(PATH_GH_LOGOUT,
+            {   method: "GET",
+                credentials: "include" })
+            }
+        }
+
         console.log("Logout status:", res.status, res.ok)
+
         if(!res.ok){
             setFailureState(true)
             setMsg("Sign out failed, please try again later 😥!")
