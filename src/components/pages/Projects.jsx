@@ -31,6 +31,7 @@ const Projects = () => {
     const [failure, setFailure] = useState(false)
     const [showtags, setShowtags] = useState(false)
     const [loading, setLoading] = useState(false)
+    const [fetchdone, setFetchDone] = useState(false)
     const {user} = useUser()
 
     const fetchProjects = AsyncHandler(async(page, query, curtags=tags) =>{
@@ -49,6 +50,7 @@ const Projects = () => {
         setTotalPages(Math.ceil(tot / projectsPerPage))
         navigate(`/projects?${params.toString()}`)
         setLoading(false)
+        setFetchDone(true)
         })
 
     const fetchTags = AsyncHandler(async(arr=tags)=>{
@@ -160,7 +162,8 @@ const Projects = () => {
             />
         </div>
         <div className="projcarddiv">
-            {project.length === 0 ?
+            {!fetchdone ? "" :
+            project.length === 0 ?
             (<div className="not-found">
             No Projects Found
             </div>):
