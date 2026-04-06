@@ -1,13 +1,15 @@
 import { useState } from "react"
 import { useParams, useNavigate} from "react-router"
 import ProjectCard from "./ProjectCard"
-import Ham from "./Ham"
 import NotFound from "../pages/404"
 import { useProj } from "../../contexts/ProjectContext"
 import { ProjectComponentMap } from "../../projects/ProjectsCompMap"
+import EXPAND_IMG from "../../assets/images/expand.png"
+import SHRINK_IMG from "../../assets/images/shrink.png"
 import "../../styles/component/projrender.css"
 
 const ProjCardRender = ({project}) => {
+
     return (
         <>
             {
@@ -29,7 +31,8 @@ const ProjPageRender = () =>{
     const {proj} = useProj()
     let { 'project-id': projectId } = useParams()
     const Project = ProjectComponentMap[projectId]
-    const [stateham, setStateham] = useState(false)
+    const [full, setFull] = useState(false)
+
     projectId = projectId.
             split("-").
             map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()).
@@ -39,25 +42,34 @@ const ProjPageRender = () =>{
     if(!Project){
         return <NotFound/>
     }
+    const toggleFullscreen = () => {
+        setFull(prev => !prev);
+    }
     return(
       <>
-      <div className="ham-projrender">
-        <Ham state={stateham} setState={setStateham}/>
-      </div>
         <div
         className= {`projpage-layout`}
         >
-            <div className="project-title">{
+            {!full && <div className="project-title">{
             projectId}
-            </div>
-            <div className="proj-banner-div">
+            </div>}
+            <div className="outer-banner-div">
+            {!full && <div className="proj-banner-div">
                 <button className="proj-back-btn"
                 onClick={()=>{navigate(-1)}}>{"←"}</button>
                 <button className="proj-code-btn"
                 onClick={()=>{window.open(p.repo, "_blank")}}>
                     {"</>"}</button>
+            </div>}
+            <div className="fullsc-div"><button
+            onClick={toggleFullscreen}>
+                {!full ? <img src={EXPAND_IMG} />:
+                        <img src={SHRINK_IMG}
+                        />}
+                </button>
+                </div>
             </div>
-            <div className="project-main-div"
+            <div className="proj-main-div"
             >
                 <Project/>
             </div>
