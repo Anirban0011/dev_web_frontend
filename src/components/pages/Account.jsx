@@ -1,5 +1,6 @@
 import Ham from "../common/Ham"
 import AsyncHandler from "../../utils/AsyncHandler"
+import FormSubmit from "../../utils/Formsubmit"
 import { useNavigate } from "react-router"
 import { useUser } from "../../contexts/UserContext"
 import PopupCard from "../common/popupCard"
@@ -10,10 +11,13 @@ import {
     PATH_GH_LOGOUT,
     PATH_USER_LOGOUT,
     githubAuthURL,
-    PATH_USR_UPD_IMG } from "../../constants/constants"
+    PATH_USR_UPD_IMG,
+    PATH_DEl_GHUSER,
+    PATH_DEl_USER } from "../../constants/constants"
 import LOGOUT_LOGO from "../../assets/images/power-off-solid-full.svg"
 import GithubLogo from "../../assets/images/github-logo.png"
 import UpdPwdForm from "../common/UpdPwdform"
+import OtpForm from "../common/otpform"
 import "../../styles/page/account.css"
 
 const Account = () => {
@@ -24,6 +28,12 @@ const Account = () => {
     const [msg, setMsg] = useState("")
     const {user, setUser} = useUser()
     const [stateupdpwd, setStateupdpwd] = useState(false)
+    const [statedelacc, setStateDelAcc] = useState(false)
+    const [otpverified, setOtpVerified] = useState(false)
+    const [otp, setOtp] = useState([])
+    const [otperr, setOtperr] = useState(false)
+    const [otpsent, setOtpsent] = useState(false)
+
     const inputRef = useRef(null)
 
     const handleLogout = AsyncHandler(async() =>{
@@ -39,7 +49,7 @@ const Account = () => {
         }
         console.log("Logout status:", res?.status, res?.ok)
 
-        if (!isnormaluser || res.ok){
+        if (!isnormaluser || res?.ok){
             if(isghuser) {
             res = await fetch(PATH_GH_LOGOUT,
             {   method: "GET",
@@ -47,9 +57,9 @@ const Account = () => {
             }
         }
 
-        console.log("Logout status:", res.status, res.ok)
+        console.log("Logout status:", res?.status, res?.ok)
 
-        if(!res.ok){
+        if(!res?.ok){
             setFailureState(true)
             setMsg("Sign out failed, please try again later 😥!")
             setPopup(true)
@@ -65,6 +75,35 @@ const Account = () => {
         window.location.assign(githubAuthURL)
         // return back from login page to account page
 })
+
+    useEffect(()=>{
+    const HandleAccDel = AsyncHandler(async()=>{
+        // verifies otp
+            if(!otpsent){
+                return
+            }
+            const PATH = user.usertype[0] ? PATH_DEl_USER : PATH_DEl_GHUSER
+            const payload = { otp: otp.join("") }
+            const res = await FormSubmit(PATH, payload, false, 'DELETE', true)
+            if(!res.ok){
+                setFailureState(true)
+                setPopup(true)
+                setMsg("OTP wrong or expired⚠️")
+                setOtperr(true)
+                setOtpsent(false);
+                return
+            }
+            setOtpVerified(true)
+            setUser({cookieset : 0})
+            navigate("/", {state : { popup : true,
+                                    failurestate : false ,
+                                    msg : "Account deleted successfully ✅",
+                                    }})
+
+        })
+        HandleAccDel()
+    }, [otpsent])
+
 
   useEffect(()=>{
         const fetchGithubData = AsyncHandler(async()=>{
@@ -187,6 +226,22 @@ const Account = () => {
             </div>
         )
     }
+    {
+        statedelacc && (
+            <div className="acc-del-form">
+                <OtpForm
+                setState={setStateDelAcc}
+                usertype={user.usertype}
+                otpverstatus={otpverified}
+                otpvalue={setOtp}
+                otpsentstatus={setOtpsent}
+                otperr={otperr}
+                setotperr={setOtperr}
+                purpose={"Account Deletion"}
+                />
+            </div>
+        )
+    }
     <div className="ham-acc"><Ham state={stateham} setState={setStateham}/></div>
      <div className={`account-layout`}>
         <div className="usr-img-div">
@@ -249,6 +304,11 @@ const Account = () => {
                         Update password
                     </button>
                 </div> : ""}
+                <div className="del-acc-div">
+                    <button
+                    onClick={()=>setStateDelAcc(true)}
+                    >Delete Account</button>
+                </div>
             </div>
              <div className="logout-btn">
             <button

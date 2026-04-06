@@ -11,7 +11,10 @@ import {
     PATH_USER_SIGNUP,
     PATH_CHK_UNAME } from "../../constants/constants"
 import FormSubmit from "../../utils/Formsubmit"
+import HIDE_PNG from "../../assets/images/hide.png"
+import VIEW_PNG from "../../assets/images/view.png"
 import "../../styles/component/signupform.css"
+
 const SignupForm = ({setState}) =>{
     const[coverImage, setcoverImage] = useState(null)
     const[cancelimg, setCancelImg] = useState(true)
@@ -23,9 +26,11 @@ const SignupForm = ({setState}) =>{
     const [umail, setUmail] = useState('')
     const [upwd, setUpwd] = useState('')
     const [loading, setLoading] = useState(false)
+    const[inptype, setInpType] = useState(false)
 
     const LoginWithGithub = () => {
         window.location.assign(githubAuthURL)
+        // github signup is same as github login
     }
 
     const handleSignup = AsyncHandler(async(e) =>{
@@ -138,6 +143,7 @@ const SignupForm = ({setState}) =>{
                 avatar,
                 cookieset: 1
             })
+    localStorage.setItem("cookieset", 1)
     navigate("/", {state : {loginpopup : true}})
     })
 
@@ -182,11 +188,19 @@ const SignupForm = ({setState}) =>{
             </div>
             <div className='pwdfield'>
                 <label>Password</label>
+                <div className="pwdfield-inner">
                 <input
-                type='password'
+                type={inptype ? "text" : "password"}
                 value={upwd}
                 onChange={(e)=>{setUpwd(e.target.value)}}
                 />
+                <button
+                type="button"
+                onClick={()=>{setInpType(prev => !prev)}}
+                >{inptype ? <img src={HIDE_PNG} />:
+                <img src={VIEW_PNG}
+                />}</button>
+                </div>
             </div>
             {loading ? (
                 <div className='addprojbuff'>Signing Up

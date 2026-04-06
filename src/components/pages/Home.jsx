@@ -4,6 +4,7 @@ import Ham from "../common/Ham"
 import PopupCard from "../common/popupCard"
 import {SearchBar} from "../common/searchcomp"
 import { useUser } from "../../contexts/UserContext"
+import useFailurePopup from "../../hooks/failurepopup"
 import { PROJ_GET_TITLE } from "../../constants/constants"
 import AsyncHandler from "../../utils/AsyncHandler"
 import "../../styles/page/home.css"
@@ -52,8 +53,10 @@ const Home = () => {
     }
   }, [])
 
+  useFailurePopup(setPopup, setMsg, setPopupFailure)
+
   const fetchTitles = AsyncHandler(async()=>{
-    const res = await fetch(PROJ_GET_TITLE+searchval,
+  const res = await fetch(PROJ_GET_TITLE+searchval,
       {
           method : "GET"
       })

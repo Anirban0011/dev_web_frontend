@@ -6,7 +6,9 @@ import Account from "../components/pages/Account"
 import Contact from "../components/common/Contact"
 import ProtectedRoute from "../contexts/ProtectPage"
 import RedirectLoginRoute from "../contexts/RedirectLogin"
+import ResetPwdProtectRoute from "../contexts/ResetpageProtect"
 import NotFound from "../components/pages/404"
+import ResetPwdPage from "../components/pages/Resetpwd"
 import { ProjPageRender } from "../components/common/projRender"
 import ScrollToTop from "../components/common/scrolltotop"
 
@@ -31,6 +33,11 @@ const Routespath = () => {
             </ProtectedRoute>}/>
         <Route path="projects/:project-id" element={<ProjPageRender/>}/>
         <Route path="*" element={<NotFound/>}/>
+        <Route path="reset-pwd/:token" element={
+            <ResetPwdProtectRoute>
+            <ResetPwdPage/>
+            </ResetPwdProtectRoute>
+            }/>
     </Routes>
     </BrowserRouter>
     )

@@ -9,7 +9,6 @@ import HIDE_PNG from "../../assets/images/hide.png"
 import VIEW_PNG from "../../assets/images/view.png"
 import "../../styles/component/updpwdfrm.css"
 
-
 const UpdPwdForm = ({setState, onSuccess}) => {
     const [popup, setPopup] = useState(false)
     const [msg, setMsg] = useState("")
@@ -77,8 +76,8 @@ const UpdPwdForm = ({setState, onSuccess}) => {
        />
        <button
        onClick={()=>{setInpType(prev => !prev)}}
-       >{inptype ? <img src={VIEW_PNG} />:
-       <img src={HIDE_PNG}
+       >{inptype ? <img src={HIDE_PNG} />:
+       <img src={VIEW_PNG}
        />}</button>
     </div>
     <div className='new-pwd'>

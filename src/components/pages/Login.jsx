@@ -6,21 +6,27 @@ import PopupCard from "../common/popupCard"
 import FormSubmit from "../../utils/Formsubmit"
 import SignupForm from "../common/SignupForm"
 import AsyncHandler from "../../utils/AsyncHandler"
+import useFailurePopup from "../../hooks/failurepopup"
 import { githubAuthURL, PATH_GH_LOGIN, PATH_USER_LOGIN } from "../../constants/constants"
 import GithubLogo from "../../assets/images/github-logo.png"
+import HIDE_PNG from "../../assets/images/hide.png"
+import VIEW_PNG from "../../assets/images/view.png"
+import Cnfmailform from "../common/Sendcnfmail"
 import "../../styles/page/login.css"
 
 const Login = () => {
     const [stateham, setStateham] = useState(false)
     const [popup, setPopup] = useState(false)
     const [msg, setMsg] = useState("")
-    const [msgStatus, setMsgStatus] = useState(false)
+    const[failurestate, setFailurestate] = useState(false)
     const navigate = useNavigate()
     const {setUser} = useUser()
     const [signUp, setSignUp] = useState(false)
     const [upwd, setUpwd] = useState('')
     const[uid, setUid] = useState('')
     const[loading, setLoading] = useState(false)
+    const[inptype, setInpType] = useState(false)
+    const[cnfstate, setCnfState] = useState(false)
 
     const LoginWithGithub = () => {
         window.location.assign(githubAuthURL)
@@ -40,7 +46,7 @@ const Login = () => {
             if(!res.ok)
             {
                 setPopup(true)
-                setMsgStatus(false)
+                setFailurestate(true)
                 setMsg("User login/signup failed!")
                 return
             }
@@ -92,14 +98,14 @@ const Login = () => {
 
         if(!uid){
             setPopup(true)
-            setMsgStatus(false)
+            setFailurestate(true)
             setMsg("Please enter username/email !")
             return
         }
 
         if(!upwd){
             setPopup(true)
-            setMsgStatus(false)
+            setFailurestate(true)
             setMsg("Please enter password !")
             return
         }
@@ -155,7 +161,7 @@ const Login = () => {
             })
         localStorage.setItem('cookieset', '1')
         setLoading(false)
-        navigate("/", {state : {loginpopup : true}})
+        navigate("/")
     })
 
     useEffect(() =>
@@ -171,11 +177,13 @@ const Login = () => {
     }
 }, [])
 
+    useFailurePopup(setPopup, setMsg, setFailurestate)
+
     return (
         <>
         {popup && <PopupCard message={msg}
         setpopupState={setPopup}
-        failure={!msgStatus}/>}
+        failure={failurestate}/>}
         {!loading &&
         (<div className="ham-login">
                 <Ham state={stateham} setState={setStateham}/>
@@ -185,6 +193,20 @@ const Login = () => {
         <div className="signup-form-loginpage">
         <SignupForm setState={setSignUp}/>
         </div>}
+
+        {
+            cnfstate && (
+                <div className="cnf-mail-form">
+                    <Cnfmailform
+                    setState={setCnfState}
+                    onSuccess={(msg) => {
+                    setMsg(msg)
+                    setFailurestate(false)
+                    setPopup(true)}}
+                    />
+                </div>
+            )
+        }
 
         <div className={`login-layout ${loading ? "loading" : ""}`}>
 
@@ -206,12 +228,23 @@ const Login = () => {
                 </div>
                 <div className="password">
                     <label>Password</label>
+                    <div className="pwd-inner-div">
                 <input
                 className="pwd-field"
-                type="password"
+                type={inptype ? "text" : "password"}
                 value={upwd}
                 onChange={(e)=>{setUpwd(e.target.value)}}
                 />
+                <button
+                type="button"
+                       onClick={()=>{setInpType(prev => !prev)}}
+                       >{inptype ? <img src={HIDE_PNG} />:
+                       <img src={VIEW_PNG}
+                       />}</button>
+                       </div>
+                       <p><a
+                       onClick={()=>{setCnfState(true)}}>
+                       forgot password ?</a></p>
                 </div>
                 <div className="login-btn">
                 <button>Login</button>
