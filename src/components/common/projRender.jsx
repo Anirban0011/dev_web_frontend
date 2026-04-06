@@ -61,7 +61,7 @@ const ProjPageRender = () =>{
                 onClick={()=>{window.open(p.repo, "_blank")}}>
                     {"</>"}</button>
             </div>}
-            <div className="fullsc-div"><button
+            <div className={`fullsc-div ${full ? "active" : ""}`}><button
             onClick={toggleFullscreen}>
                 {!full ? <img src={EXPAND_IMG} />:
                         <img src={SHRINK_IMG}
@@ -71,7 +71,9 @@ const ProjPageRender = () =>{
             </div>
             <div className="proj-main-div"
             >
-                <Project/>
+                <Project
+                 full={full}
+                />
             </div>
         </div>
         </>

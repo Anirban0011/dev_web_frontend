@@ -5,7 +5,7 @@ import useClickOutside from "../hooks/clickoutside"
 import { ProjectLoading } from "./ProjCommonComp"
 import "./styles/projschler.css"
 
-const ProjectCPUSchler = () => {
+const ProjectCPUSchler = ({full}) => {
      const[popup, setPopup] = useState(false)
      const[ddopen , setddOpen] = useState()
      const[selected, setSelected] = useState("")
@@ -113,16 +113,6 @@ const handleClear = () => {
     setQ(0)
 }
 
-// useEffect(()=>{
-//      const handleClickOutside = (e) => {
-//       if (ddRef.current && !ddRef.current.contains(e.target)) {
-//         setddOpen(false)
-//       }
-//     }
-//     document.addEventListener("mousedown", handleClickOutside)
-//     return () => document.removeEventListener("mousedown", handleClickOutside)
-// }, [])
-
 useEffect(()=>{
     const tb = tableRef.current
     if(!tb) return
@@ -218,7 +208,7 @@ const HandleRowScroll = (id) =>{
         <form onSubmit={HandleSubmit}
         className="projschler-div">
             <div className="projschler-dd-div">
-                <p>Choose scheduling Algorithm :</p>
+                <div className={`text-div ${full ? "active" : ""}`}>Choose scheduling Algorithm :</div>
                 <div className={`projschler-sel-wrp ${ddopen ? "open" : ""}`}
                 ref={ddRef}>
             <div
