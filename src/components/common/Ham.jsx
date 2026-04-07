@@ -1,6 +1,8 @@
 import {Link} from "react-router"
 import { useUser } from "../../contexts/UserContext"
 import { UseTheme } from "../../contexts/ThemeContext"
+import MOON_PNG from "../../assets/images/moon.png"
+import SUN_PNG from "../../assets/images/sun.png"
 import '../../styles/component/ham.css'
 
 const Ham = ({state, setState}) => {
@@ -36,9 +38,9 @@ const Ham = ({state, setState}) => {
              <li className="tog-th-nav">
                  <button className="theme-btn" onClick={toggleTheme}>
               <span className={theme === "light" ? "icon-moon-light" : "icon-moon-dark"}>
-                    {"🌙"}</span>
+                    <img src={MOON_PNG}/></span>
                 <span className={theme === "light" ? "icon-sun-light" : "icon-sun-dark"}>
-                    {"☀️"}</span>
+                    <img src={SUN_PNG}/></span>
             </button>
             </li>
             </ul>
