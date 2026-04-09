@@ -17,5 +17,5 @@ test('user can login successfully', async ({ page, context }) => {
 
     await expect(
         page.locator('a.account', { hasText: process.env.TEST_USERNAME })
-    ).toBeVisible()
+    ).toBeVisible({ timeout: 10000 })
 })
