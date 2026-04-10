@@ -3,7 +3,7 @@ import { test, expect } from '@playwright/test'
 
 test('user can login successfully', async ({ page, context }) => {
     await context.clearCookies()
-    await page.goto(process.env.VITE_GIT_URL)
+    await page.goto('http://localhost:5173/')
 
     await page.getByTestId("ham-menu-btn").click()
     await page.getByTestId("login-btn").click()
