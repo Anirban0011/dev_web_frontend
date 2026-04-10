@@ -16,11 +16,10 @@ jobs:
     - run: npm install
     - run: npx playwright install --with-deps
     - run : npx wait-on ${{vars.BASE_URL}}
-    - run: npm run dev &
+    - run: VITE_BACKEND_BASE_URI = ${{ vars.VITE_BACKEND_BASE_URI }} npm run dev &
     - run: npx wait-on ${{ vars.LOCALHOST }}
     - run: npx playwright test tests/login.test.js
       env:
-          VITE_BACKEND_BASE_URI : ${{ vars.VITE_BACKEND_BASE_URI }}
           LOCALHOST : ${{ vars.LOCALHOST }}
           TEST_USERNAME: ${{ secrets.TEST_USERNAME }}
           TEST_PASSWORD: ${{ secrets.TEST_PASSWORD }}
