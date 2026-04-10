@@ -4,14 +4,12 @@ import { test, expect } from '@playwright/test'
 test('user can login successfully', async ({ page, context }) => {
     await context.clearCookies()
 
-     let loginStatus = null
     page.on('response', r => {
         if (r.url().includes('login')) {
-            loginStatus = r.status()
-            console.log('LOGIN STATUS:', loginStatus)
+            console.log('LOGIN STATUS:', r.status())
         }
     })
-    
+
     await page.goto('http://localhost:5173')
 
     await page.getByTestId("ham-menu-btn").click()
