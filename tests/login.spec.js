@@ -12,9 +12,9 @@ test('user can login successfully', async ({ page, context }) => {
 
     page.on('response', r => {
   if (r.url().includes('login')) {
-    console.log('LOGIN STATUS:', r.status(), r.url())
-  }
-})
+    console.log('LOGIN STATUS:', r.status())
+    }
+    })
 
     await page.getByTestId("username-email-input").fill(process.env.TEST_USERNAME)
     await page.getByTestId("username-pass-input").fill(process.env.TEST_PASSWORD)
