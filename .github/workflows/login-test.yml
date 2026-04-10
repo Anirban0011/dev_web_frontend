@@ -1,4 +1,4 @@
-name: Login flow test
+name: Login Flow Test
 on:
   push:
     branches: [ master ]
@@ -15,11 +15,13 @@ jobs:
         node-version: lts/*
     - run: npm install
     - run: npx playwright install --with-deps
-    - run : npx wait-on ${{vars.BASE_ENDPOINT}}
-    - run: VITE_BACKEND_BASE_URI=${{ vars.BASE_ENDPOINT }} npm run dev &
-    - run: npx wait-on http://localhost:5173
-    - run: npx playwright test
+    - run : npx wait-on ${{vars.BASE_URL}}
+    - run: npm run dev &
+    - run: npx wait-on ${{ vars.LOCALHOST }}
+    - run: npx playwright test tests/login.test.js
       env:
+          VITE_BACKEND_BASE_URI : ${{ vars.VITE_BACKEND_BASE_URI }}
+          LOCALHOST : ${{ vars.LOCALHOST }}
           TEST_USERNAME: ${{ secrets.TEST_USERNAME }}
           TEST_PASSWORD: ${{ secrets.TEST_PASSWORD }}
 
