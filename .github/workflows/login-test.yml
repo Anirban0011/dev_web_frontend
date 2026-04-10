@@ -17,6 +17,7 @@ jobs:
     - run: npx playwright install --with-deps
     - run: npm run dev &
     - run: npx wait-on http://localhost:5173
+    - run : curl -s ${{vars.BASE_ENDPOINT}}
     - run: npx playwright test
       env:
           TEST_USERNAME: ${{ secrets.TEST_USERNAME }}
