@@ -10,11 +10,11 @@ test('user can login successfully', async ({ page, context }) => {
 
     await expect(page).toHaveURL(/login/)
 
-    page.on('response', async (res) => {
-   if (res.url().includes('login')) {
-    console.log('LOGIN ROUTE :', res.url())
+    page.on('response', r => {
+  if (r.url().includes('login')) {
+    console.log('LOGIN STATUS:', r.status(), r.url())
   }
-    })
+})
 
     await page.getByTestId("username-email-input").fill(process.env.TEST_USERNAME)
     await page.getByTestId("username-pass-input").fill(process.env.TEST_PASSWORD)
