@@ -27,6 +27,9 @@ jobs:
   create-pr:
     needs: login-flow-test
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
     if: success()
     steps:
       - uses: actions/checkout@v4
@@ -38,4 +41,4 @@ jobs:
             --title "Auto PR: ${{ github.ref_name }}" \
             --body "Automated PR created because Playwright login tests passed." \
             --base master \
-            --head ${{ github.ref_name }} || echo "PR create failed !"
+            --head ${{ github.ref_name }}
