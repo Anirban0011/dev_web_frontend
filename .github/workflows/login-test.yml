@@ -2,7 +2,9 @@ name: Login Flow Test
 on:
   push:
     branches: [ "test/**" ]
-
+    paths:
+      - '**/*.js'
+      - 'package.json'
 jobs:
   login-flow-test:
     timeout-minutes: 60
@@ -43,4 +45,5 @@ jobs:
             --body "Automated PR created because Playwright login tests passed." \
             --base master \
             --head ${{ github.ref_name }}
+          sleep 5
           gh pr merge --auto --squash "${{ github.ref_name }}"

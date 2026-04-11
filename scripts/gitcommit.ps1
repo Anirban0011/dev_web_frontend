@@ -1,6 +1,6 @@
 function ship($branch, $message) {
     git checkout -b $branch
-    git add .
+    git add -A
     git commit -m $message
     git push origin $branch
     git checkout master
