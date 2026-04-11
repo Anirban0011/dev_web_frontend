@@ -30,15 +30,17 @@ jobs:
     permissions:
       contents: write
       pull-requests: write
+      repository-projects: write
     if: success()
     steps:
       - uses: actions/checkout@v4
       - name: Create Pull Request
         env:
-          GH_TOKEN: ${{ github.token }}
+          GH_TOKEN: ${{ secrets.AUTO_PR_TOKEN }}
         run: |
           gh pr create \
             --title "Auto PR: ${{ github.ref_name }}" \
             --body "Automated PR created because Playwright login tests passed." \
             --base master \
             --head ${{ github.ref_name }}
+          gh pr merge --auto --squash "${{ github.ref_name }}"
