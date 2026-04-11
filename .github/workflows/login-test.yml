@@ -18,8 +18,8 @@ jobs:
       - uses: dorny/paths-filter@v3
         id: changes
         with:
+          base : master
           filters: |
-            base : master
             logic:
               - '**/*.js'
               - 'package.json'
@@ -37,6 +37,8 @@ jobs:
           npm run dev &
           npx wait-on ${{ vars.LOCALHOST }}
           npx playwright test tests/login.test.js
+      - if: failure()
+        run: git push origin --delete ${{ github.ref_name }}
 
   create-pr:
     needs: login-flow-test
