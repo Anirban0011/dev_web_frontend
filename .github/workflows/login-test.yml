@@ -2,28 +2,29 @@ name: Login Flow Test
 on:
   push:
     branches: [ "test/**" ]
+
 jobs:
   login-flow-test:
     timeout-minutes: 60
     runs-on: ubuntu-latest
     env:
-          VITE_GITHUB_CLIENT_ID: ${{ secrets.VITE_GITHUB_CLIENT_ID }}
-          LOCALHOST: ${{ vars.LOCALHOST }}
-          TEST_USERNAME: ${{ secrets.TEST_USERNAME }}
-          TEST_PASSWORD: ${{ secrets.TEST_PASSWORD }}
-          VITE_BACKEND_BASE_URI: ${{ vars.VITE_BACKEND_BASE_URI }}
+      VITE_GITHUB_CLIENT_ID: ${{ secrets.VITE_GITHUB_CLIENT_ID }}
+      LOCALHOST: ${{ vars.LOCALHOST }}
+      TEST_USERNAME: ${{ secrets.TEST_USERNAME }}
+      TEST_PASSWORD: ${{ secrets.TEST_PASSWORD }}
+      VITE_BACKEND_BASE_URI: ${{ vars.VITE_BACKEND_BASE_URI }}
     steps:
-    - uses: actions/checkout@v4
-    - uses: actions/setup-node@v4
-      with:
-        node-version: lts/*
-    - run: npm install
-    - run: npx playwright install --with-deps
-    - run : npx wait-on ${{ vars.VITE_BACKEND_BASE_URI }} # wait for backend server
-    - run: npm run dev &
-    - run: npx wait-on ${{ vars.LOCALHOST }}
-    - run: npx playwright test tests/login.test.js
-create-pr:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+      - run: npm install
+      - run: npx playwright install --with-deps
+      - run: npx wait-on ${{ vars.VITE_BACKEND_BASE_URI }}
+      - run: npm run dev &
+      - run: npx wait-on ${{ vars.LOCALHOST }}
+      - run: npx playwright test tests/login.test.js
+  create-pr:
     needs: login-flow-test
     runs-on: ubuntu-latest
     if: success()
